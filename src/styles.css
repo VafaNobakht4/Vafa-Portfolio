@@ -1,16 +1,45 @@
+@import "tailwindcss";
 
+/* Colors and fonts — used as Tailwind classes like bg-surface, text-muted, font-mono */
+@theme {
+  --color-background: #0f0f0e;
+  --color-surface: #161615;
+  --color-foreground: #eaeae5;
+  --color-muted: #90908a;
+  --color-border: #242422;
+  --color-accent: #e4dfd2;
 
-* {
-  box-sizing: border-box;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
-main {
-  width: min(42rem, calc(100% - 2rem));
-  margin: 4rem auto;
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
