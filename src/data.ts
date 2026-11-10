@@ -164,22 +164,6 @@ export const projects: Project[] = [
     tech: ["WordPress", "Elementor Pro", "PHP", "Swiper"],
   },
   {
-    name: "Shop Store",
-    url: "https://shop-store-psi.vercel.app/",
-    repo: "https://github.com/VafaNobakht4/Shop-store",
-    description:
-      "A simple store that lists products, shows product details, and has a shopping cart and search.",
-    tech: ["Next.js", "TypeScript", "Zustand", "Material UI"],
-  },
-  {
-    name: "Divar Clone",
-    url: "https://github.com/VafaNobakht4/vafa-divar-frontend",
-    repo: "https://github.com/VafaNobakht4/vafa-divar-frontend",
-    description:
-      "A classifieds marketplace inspired by Divar for buying and selling items, with a separate Django backend.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Radix UI", "Django"],
-  },
-  {
     name: "Intern Finder",
     url: "https://github.com/VafaNobakht4/Intern-finder-front",
     repo: "https://github.com/VafaNobakht4/Intern-finder-front",
