@@ -4,7 +4,7 @@ export const profile = {
   name: "Vafa Nobakht",
   firstName: "Vafa",
   role: "Full-Stack Developer",
-  years: "4+",
+  years: "5+",
   location: "Mazandaran, Iran",
   shortLocation: "Mazandaran, IR",
   timeZone: "Asia/Tehran",
@@ -16,6 +16,14 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/vafa-nobakht",
   resume: "/VafaNobakht-Resume.pdf",
   avatar: "/avatar.jpg",
+};
+
+// The contact form sends messages through Web3Forms (web3forms.com), which emails
+// every submission to vafa.nobakht4@gmail.com. The access key is safe to keep in
+// the code — it can only deliver messages to that one inbox.
+export const contactForm = {
+  endpoint: "https://api.web3forms.com/submit",
+  accessKey: "dce6ea2c-5f21-4ee2-bde6-0d6e257cd860",
 };
 
 // Words that rotate in the hero: "I build ___ for the web."
@@ -69,7 +77,7 @@ export const experience: Experience[] = [
     tags: ["Next.js", "TypeScript", "Tailwind", "Django", "Docker"],
   },
   {
-    period: "3.5 years",
+    period: "5 years",
     role: "React / Next.js Developer",
     company: "Private Company",
     summary:

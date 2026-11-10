@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { CopyEmailButton } from "../components/CopyEmailButton";
 import { Reveal } from "../components/Reveal";
 import { PageHeader } from "../components/SectionTitle";
-import { profile } from "../data";
+import { contactForm, profile } from "../data";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ meta: [{ title: `Contact — ${profile.name}` }] }),
@@ -25,19 +26,60 @@ const inputClass =
 const labelClass =
   "mb-1.5 block font-mono text-[11px] uppercase tracking-widest text-muted";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 function ContactPage() {
-  // The form doesn't send anything itself — it opens the visitor's mail app
-  // with the message already filled in.
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorText, setErrorText] = useState("");
+
+  // Sends the message to my inbox through Web3Forms (see data.ts).
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+
+    // Bots fill in every field, including this hidden one — ignore them.
+    if (form.get("botcheck")) return;
+
     const name = String(form.get("name") || "");
     const email = String(form.get("email") || "");
     const message = String(form.get("message") || "");
 
-    const subject = `Hello from ${name || "your portfolio"}`;
-    const body = `${message}\n\n— ${name}\n${email}`;
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("sending");
+    try {
+      const response = await fetch(contactForm.endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: contactForm.accessKey,
+          subject: `New portfolio message from ${name}`,
+          from_name: `${profile.name} — Portfolio`,
+          name,
+          email, // Web3Forms uses this as the reply-to address
+          message,
+        }),
+      });
+      // If the reply isn't JSON (e.g. a blocked request), treat it as a failure.
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "The message couldn't be sent.");
+      }
+
+      setStatus("sent");
+      formElement.reset();
+    } catch (error) {
+      // fetch throws a TypeError when the mail service can't be reached at all.
+      if (error instanceof TypeError) {
+        setErrorText("Couldn't reach the mail service.");
+      } else {
+        setErrorText(error instanceof Error ? error.message : "");
+      }
+      setStatus("error");
+    }
   }
 
   return (
@@ -125,15 +167,40 @@ function ContactPage() {
                 className={`${inputClass} resize-y`}
               />
             </div>
+            {/* Hidden spam trap: real people never see or fill this */}
+            <input
+              type="text"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              className="hidden"
+            />
+
             <button
               type="submit"
-              className="mt-5 w-full rounded-full border border-accent py-2.5 font-mono text-sm text-accent transition-colors hover:bg-accent/10 sm:w-auto sm:px-8"
+              disabled={status === "sending"}
+              className="mt-5 w-full rounded-full border border-accent py-2.5 font-mono text-sm text-accent transition-colors hover:bg-accent/10 disabled:cursor-wait disabled:opacity-60 sm:w-auto sm:px-8"
             >
-              Send message →
+              {status === "sending" ? "Sending…" : "Send message →"}
             </button>
-            <p className="mt-3 font-mono text-[11px] text-muted/70">
-              This opens your mail app — no data is stored anywhere.
-            </p>
+
+            {status === "sent" && (
+              <p className="mt-3 font-mono text-xs text-accent">
+                ✓ Thanks! Your message is in my inbox — I'll reply soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-3 font-mono text-xs text-red-300">
+                {errorText || "Couldn't send your message."} You can also email
+                me directly at {profile.email}.
+              </p>
+            )}
+            {(status === "idle" || status === "sending") && (
+              <p className="mt-3 font-mono text-[11px] text-muted/70">
+                Your message goes straight to my inbox.
+              </p>
+            )}
           </form>
         </Reveal>
       </div>
