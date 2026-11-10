@@ -259,12 +259,12 @@ function Contact() {
 
         <div className="mt-8">
           <Magnetic>
-            <a
-              href={`mailto:${profile.email}`}
+            <Link
+              to="/contact"
               className="inline-block rounded-full border border-accent px-8 py-3 font-mono text-sm text-accent transition-colors hover:bg-accent/10"
             >
               Say hello
-            </a>
+            </Link>
           </Magnetic>
         </div>
 
