@@ -94,7 +94,7 @@ function AboutPage() {
         </Reveal>
         <Reveal>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-            I spent 3.5 years as a React / Next.js developer on a product team.
+            I spent 5 years as a React / Next.js developer on a product team.
             Now I build complete websites for clients — from marketing sites for
             businesses in <span className="text-accent">Melbourne</span> to a
             white-label shop platform in Iran.
