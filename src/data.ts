@@ -164,6 +164,20 @@ export const projects: Project[] = [
     tech: ["WordPress", "Elementor Pro", "PHP", "Swiper"],
   },
   {
+    // The repo is private and the bot is personal, so the link opens a screenshot.
+    name: "VafaBot — Telegram Assistant",
+    url: "/projects/vafabot.png",
+    description:
+      "A personal Telegram assistant with password login and auto-expiring sessions: a to-do list with calendar, notebook, quick notes, reminders, and a daily briefing with tasks, weather and the USDT price in Toman.",
+    tech: [
+      "Python",
+      "python-telegram-bot",
+      "PostgreSQL",
+      "aiohttp",
+      "GitHub Actions",
+    ],
+  },
+  {
     name: "Intern Finder",
     url: "https://github.com/VafaNobakht4/Intern-finder-front",
     repo: "https://github.com/VafaNobakht4/Intern-finder-front",
