@@ -11,12 +11,20 @@ export const Route = createFileRoute("/about")({
 
 const learningNow = [
   {
-    title: "Server-side Next.js",
-    text: "Server Actions, caching and the metadata API — moving more work to the server so pages load fast and rank well in search.",
+    title: "Backend development",
+    text: "Django REST, PostgreSQL and Redis — designing APIs, data models and authentication, not just consuming them from the frontend.",
   },
   {
-    title: "Backend & deployment",
-    text: "Django REST, PostgreSQL, Redis and Docker — building and shipping the full picture of a modern web app, end to end.",
+    title: "UI/UX design",
+    text: "User research, wireframes and prototypes in Figma, design systems and accessibility — designing great experiences before building them.",
+  },
+  {
+    title: "CI/CD & DevOps",
+    text: "Automated pipelines with GitHub Actions — linting, tests and builds on every push, Docker images, and safe, zero-downtime deploys to production.",
+  },
+  {
+    title: "The whole software lifecycle",
+    text: "Architecture, testing, code review and monitoring — growing from a frontend specialist into an engineer who can own a product end to end.",
   },
 ];
 
@@ -95,9 +103,9 @@ function AboutPage() {
         <Reveal>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted">
             I spent 5 years as a React / Next.js developer on a product team.
-            Now I build complete websites for clients — from marketing sites for
-            businesses in <span className="text-accent">Melbourne</span> to a
-            white-label shop platform in Iran.
+            Now I build complete websites for businesses — from company sites
+            and portfolios to <span className="text-accent">Parsa Shop</span>, a
+            white-label platform that powers online stores.
           </p>
         </Reveal>
       </section>

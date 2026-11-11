@@ -43,13 +43,20 @@ export const aboutFacts = [
 
 export const now = {
   learning: [
-    { text: "Next.js Server Actions & caching", status: "in progress" },
-    { text: "Django REST + PostgreSQL search", status: "in progress" },
-    { text: "Testing with Playwright", status: "up next" },
+    { text: "Backend: Django REST, PostgreSQL & Redis", status: "in progress" },
+    {
+      text: "UI/UX design: Figma, design systems & usability",
+      status: "in progress",
+    },
+    {
+      text: "CI/CD: GitHub Actions, Docker & automated deploys",
+      status: "in progress",
+    },
+    { text: "Software architecture & testing", status: "up next" },
   ],
   building: {
-    name: "Parsa Shop",
-    text: "a white-label online store platform, my newest full-stack build.",
+    name: "Online stores",
+    text: "collaborating with shops to design, build and launch their own store websites.",
   },
   nextUp: [
     "Launch more stores on the shop platform",
@@ -73,7 +80,7 @@ export const experience: Experience[] = [
     role: "Full-Stack Developer",
     company: "Freelance",
     summary:
-      "Designing and shipping production websites for clients in Iran and Australia — from marketing sites to a white-label shop platform with a Next.js storefront and a Django REST backend.",
+      "Designing and shipping production websites for businesses — from company sites and portfolios to a white-label shop platform with a Next.js storefront and a Django REST backend.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Django", "Docker"],
   },
   {
@@ -128,6 +135,20 @@ export type Project = {
 // The first three are shown on the home page; all of them on /projects.
 export const projects: Project[] = [
   {
+    name: "Arsham Design",
+    url: "https://arshamdesign.ir/",
+    description:
+      "A Persian (RTL) portfolio for an interior designer — showcasing kitchen cabinet, wardrobe and closet designs and renders, with light and dark themes.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
+  },
+  {
+    name: "Oakleigh Luxe Floors",
+    url: "https://oakleigh-luxe-floors.vercel.app/",
+    description:
+      "Marketing site for a flooring installation company. Smooth scroll animations and an enquiry form handled by a Server Action with validation, rate limiting and email delivery.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Framer Motion"],
+  },
+  {
     name: "Parsa Shop",
     url: "https://91-107-148-167.sslip.io:8443/",
     description:
@@ -143,25 +164,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Oakleigh Luxe Floors",
-    url: "https://oakleigh-luxe-floors.vercel.app/",
-    description:
-      "Marketing site for a Melbourne flooring company. Smooth scroll animations and an enquiry form handled by a Server Action with validation, rate limiting and email delivery.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Framer Motion"],
-  },
-  {
-    name: "Arsham Design",
-    url: "https://arshamdesign.ir/",
-    description:
-      "A Persian (RTL) portfolio for an interior designer — showcasing kitchen cabinet, wardrobe and closet designs and renders, with light and dark themes.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
-  },
-  {
     name: "Eastern Melbourne Carpentry",
     url: "https://emcarpentry.com.au/",
     description:
-      "Business website for a carpentry company in Melbourne, built on WordPress so the owner can edit services and content without code.",
-    tech: ["WordPress", "Elementor Pro", "PHP", "Swiper"],
+      "Website for a carpentry business in Melbourne's eastern suburbs: service pages for decking, pergolas, fencing, flooring, renovations and extensions, a project portfolio with photo galleries, testimonials and a contact page — built on WordPress with Elementor Pro so the owner can update everything without code.",
+    tech: ["WordPress", "Elementor Pro", "ElementsKit", "PHP", "Swiper"],
   },
   {
     // The repo is private and the bot is personal, so the link opens a screenshot.
